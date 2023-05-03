@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
+</head>
+
+<body>
+    <h2>Camera</h2>
+    <div class="camera">
+        <button onclick="moveCamera(0,1,0)">UP</button>
+        <button onclick="moveCamera(0,-1,0)">DOWN</button>
+        <button onclick="moveCamera(1,0,0)">LEFT</button>
+        <button onclick="moveCamera(-1,0,0)">RIGHT</button>
+        <button onclick="moveCamera(0,0,-1)">Zoom+</button>
+        <button onclick="moveCamera(0,0,1)">Zoom-</button>
+
+    </div>
+    <h2>Meteoritos</h2>
+    <div id="meteoritos">
+    </div>
+
+    <input type="date" id="start-date" name="trip-start" value="1996-01-01" min="1996-01-01" max="2023-01-01">
+    <button onclick="findDate()">Busca</button>
+    <div id="loading"></div>
+    <div id="escenario"></div>
+
+
+
+
+
+
+
+
+    <style>
+        h2 {
+            color: white;
+        }
+
+        canvas {
+            border: 1px solid white;
+        }
+
+        #loading {
+            display: none;
+            border: 8px solid blue;
+            border-radius: 50%;
+            height: 60px;
+            width: 60px;
+            border-top: 8px solid white;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: carga 2s infinite linear;
+        }
+
+        @keyframes carga {
+            from {
+                transform: rotate(0deg);
+
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+
+        .text-center {
+            text-align: center;
+            color: white;
+            margin: 5px;
+        }
+
+        #meteoritos {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    </style>
+
+    <script src="index.js"></script>
+</body>
+
+</html>
