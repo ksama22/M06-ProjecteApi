@@ -13,15 +13,22 @@
 <body>
     <h2>Camera</h2>
     <div class="camera">
-        <button onclick="moveCamera(0,1,0)">UP</button>
-        <button onclick="moveCamera(0,-1,0)">DOWN</button>
-        <button onclick="moveCamera(1,0,0)">LEFT</button>
-        <button onclick="moveCamera(-1,0,0)">RIGHT</button>
-        <button onclick="moveCamera(0,0,-1)">Zoom+</button>
-        <button onclick="moveCamera(0,0,1)">Zoom-</button>
-
+        <button onmouseup="zoomPressed=false" onmousedown="moveCamera(0,1,0)">UP</button>
+        <button onmouseup="zoomPressed=false" onmousedown="moveCamera(0,-1,0)">DOWN</button>
+        <button onmouseup="zoomPressed=false" onmousedown="moveCamera(-1,0,0)">LEFT</button>
+        <button onmouseup="zoomPressed=false" onmousedown="moveCamera(1,0,0)">RIGHT</button>
+        <button onmouseup="zoomPressed=false" onmousedown="moveCamera(0,0,-1)">Zoom+</button>
+        <button onmouseup="zoomPressed=false" onmousedown="moveCamera(0,0,1)">Zoom-</button>
     </div>
     <h2>Meteoritos</h2>
+    <div class="meteor-text">
+        <button onclick="drawMeteroid(-1)">Atras</button>
+        <span id="actualMeteor">1
+        </span>/<span id="lastMeteor">12</span>
+        <button onclick="drawMeteroid(1)">Delante</button>
+    </div>
+
+
     <div id="meteoritos">
     </div>
 
