@@ -8,23 +8,47 @@
     <title>Document</title>
     <link rel="stylesheet" href="index.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 
 <body>
-    <h2>Camera</h2>
-    <div class="camera">
-        <button onmouseup="zoomPressed=false" onmousedown="moveCamera(0,1,0)">UP</button>
-        <button onmouseup="zoomPressed=false" onmousedown="moveCamera(0,-1,0)">DOWN</button>
-        <button onmouseup="zoomPressed=false" onmousedown="moveCamera(-1,0,0)">LEFT</button>
-        <button onmouseup="zoomPressed=false" onmousedown="moveCamera(1,0,0)">RIGHT</button>
-        <button onmouseup="zoomPressed=false" onmousedown="moveCamera(0,0,-1)">Zoom+</button>
-        <button onmouseup="zoomPressed=false" onmousedown="moveCamera(0,0,1)">Zoom-</button>
+    <h1>Nasa API</h1>
+    <h2>Canvas</h2>
+    <div id="escenario">
+        <div id="camara">
+                <div class="camera">
+                <button class="material-icons" onmouseup="zoomPressed=false" onmousedown="moveCamera(0,1,0)">
+                    keyboard_arrow_up
+                </button>
+                <button class="material-icons" onmouseup="zoomPressed=false" onmousedown="moveCamera(0,-1,0)">
+                    keyboard_arrow_down
+                </button>
+                <button class="material-icons" onmouseup="zoomPressed=false" onmousedown="moveCamera(-1,0,0)">
+                    keyboard_arrow_left
+                </button>
+                <button class="material-icons" onmouseup="zoomPressed=false" onmousedown="moveCamera(1,0,0)">
+                    keyboard_arrow_right
+                </button>
+                <button class="material-icons" onmouseup="zoomPressed=false" onmousedown="moveCamera(0,0,-1)">
+                    zoom_in
+                </button>
+                <button class="material-icons" onmouseup="zoomPressed=false" onmousedown="moveCamera(0,0,1)">
+                    zoom_out
+                </button>
+            </div>
+            <label for="velocityCamera">SpeedCamera</label>
+            <input onchange="actualitzaVelocitat()" min="0" value="1" type="number" step="0.1" id="velocityCamera">
+       
+        </div>
     </div>
+
+
     <h2>Meteoritos</h2>
     <div class="meteor-text">
         <button onclick="drawMeteroid(-1)">Atras</button>
-        <span id="actualMeteor">1
-        </span>/<span id="lastMeteor">12</span>
+        <span id="actualMeteor">1</span>
+        /<span id="lastMeteor">12</span>
         <button onclick="drawMeteroid(1)">Delante</button>
     </div>
 
@@ -35,61 +59,20 @@
     <input type="date" id="start-date" name="trip-start" value="1996-01-01" min="1996-01-01" max="2023-01-01">
     <button onclick="findDate()">Busca</button>
     <div id="loading"></div>
-    <div id="escenario"></div>
 
 
 
 
+    <h2>Foto del dia</h2>
+    <div id="fotoDiaria">
+        <div id="title"></div>
+        <a id="imagehd" href=".">
+            <img id="image" src="." alt="">
+        </a>
+        <div id="description"></div>
+    </div>
 
 
-
-
-    <style>
-        h2 {
-            color: white;
-        }
-
-        canvas {
-            border: 1px solid white;
-        }
-
-        #loading {
-            display: none;
-            border: 8px solid blue;
-            border-radius: 50%;
-            height: 60px;
-            width: 60px;
-            border-top: 8px solid white;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: carga 2s infinite linear;
-        }
-
-        @keyframes carga {
-            from {
-                transform: rotate(0deg);
-
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-
-        .text-center {
-            text-align: center;
-            color: white;
-            margin: 5px;
-        }
-
-        #meteoritos {
-            display: flex;
-            flex-wrap: wrap;
-        }
-    </style>
 
     <script src="index.js"></script>
 </body>

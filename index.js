@@ -3,7 +3,7 @@ let API_KEY = 'yns2Tz49qdSIKPohDnbeNoeRfCIrqRtt5smy1cnM'
 //Controla el zoom
 let zoomPressed = false;
 let zoomxyz = { x: 0, y: 0, z: 0 }
-
+let speedCamera = 1;
 let llistaMeteorids = null;
 let uidLastMetorid = null;
 let actualSelect = 0;
@@ -87,6 +87,21 @@ function findDate() {
 
 }
 
+function findPhoto() {
+    //https://api.nasa.gov/planetary/apod?api_key=yns2Tz49qdSIKPohDnbeNoeRfCIrqRtt5smy1cnM
+    let query = `${API_BASE}/planetary/apod?api_key=${API_KEY}`;
+    console.log("findPhoto()", query);
+    fetch(query, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+        },
+    })
+        .then(response => response.json()) ///*{if (response.status !== 200) {alert("Hubo algun problema \nNASA API: Status Code " + response.status)}}
+        .then(response => getDayPhoto(response))
+
+}
+
 //Coding a 3D Solar System with JavaScript + Three.js  https://www.youtube.com/watch?v=KOSMzSyiEiA
 function listAsteroids(asteroid, date) {
     //Esborra l'anterior
@@ -101,7 +116,7 @@ function listAsteroids(asteroid, date) {
 
 //Pinta un asteorid
 function drawMeteroid(num) {
-    actualSelect= actualSelect+ num;
+    actualSelect = actualSelect + num;
     let obj = llistaMeteorids;
     //Esborra l'anterior existent per 'uid'
     if (uidLastMetorid !== null) {
@@ -122,7 +137,7 @@ function drawMeteroid(num) {
     console.log(mesh.uuid);
     //Afegeix el planeta
     scene.add(mesh);
-    console.log(actualSelect,"defv");
+    console.log(actualSelect, "defv");
 
 }
 
@@ -163,9 +178,11 @@ function animate(mesh) {
 }
 
 function moveCamera(x, y, z) {
-    zoomxyz.x = x;
-    zoomxyz.y = y;
-    zoomxyz.z = z;
+    //Controlem la velocitat de camera
+    zoomxyz.x = x * speedCamera;
+    zoomxyz.y = y * speedCamera;
+    zoomxyz.z = z * speedCamera;
+    //S'executa mentre 'zoomPressed'' es true
     zoomPressed = true;
 }
 
@@ -196,3 +213,22 @@ function Escucha(e, down) {
     // alert(`Click is Outside The Element`);
 
 }*/
+// Controla la velocitat de la camara
+function actualitzaVelocitat() {
+    speedCamera = document.getElementById('velocityCamera').value;
+    console.log("spped", speedCamera);
+}
+
+function getDayPhoto(props) {
+    console.log(props);
+    document.getElementById("title").innerText = props.title;
+    let image = document.getElementById("image");
+    image.src = props.url;
+    image.alt = props.title;
+    document.getElementById("imagehd").href = props.hdurl;
+    document.getElementById("description").innerText = props.explanation;
+}
+
+window.onload = function () {
+    findPhoto();
+}
