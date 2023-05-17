@@ -5,7 +5,8 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   color: white;
 }
 
@@ -19,6 +20,7 @@ h2 {
   bottom: 10px;
   left: 10px;
 }
+
 #velocityCamera {
   background-color: transparent;
   border: 1px solid white;
@@ -37,9 +39,13 @@ h2 {
     "left  zoomout right"
     "down down down";
   max-width: 100px;
-  gap: 6px;
+  gap: 4px;
 }
 
+th,
+td {
+  padding: 5px;
+}
 .camera > button {
   background-color: black;
   border: none;
@@ -57,24 +63,30 @@ h2 {
 .camera > button:nth-child(1) {
   grid-area: up;
 }
+
 .camera > button:nth-child(2) {
   grid-area: down;
 }
+
 .camera > button:nth-child(3) {
   grid-area: left;
 }
+
 .camera > button:nth-child(4) {
   grid-area: right;
 }
+
 .camera > button:nth-child(5) {
   grid-area: zoomin;
 }
+
 .camera > button:nth-child(6) {
   grid-area: zoomout;
 }
 
 canvas {
   border: 1px solid white;
+  width: 100%;
 }
 
 #loading {
@@ -89,6 +101,12 @@ canvas {
   left: 50%;
   transform: translate(-50%, -50%);
   animation: carga 2s infinite linear;
+}
+
+th,
+tr {
+  background-color: white;
+  paddi: 10px;
 }
 
 @keyframes carga {
@@ -118,10 +136,31 @@ canvas {
   text-align: center;
   max-width: 800px;
 }
+
 #title,
 #description {
   padding: 10px;
 }
+
 #image {
   width: 100%;
 }
+
+.asteroidinfo {
+  padding: 1px;
+}
+
+.asteroidinfo > select {
+  background-color: black;
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 6px;
+}
+.terrainput {
+  padding: 5px;
+  margin-top: 10px;
+  font-size: 20px;
+  color: white;
+}
+

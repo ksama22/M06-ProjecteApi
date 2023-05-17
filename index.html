@@ -14,10 +14,53 @@
 
 <body>
     <h1>Nasa API</h1>
+    <input type="date" id="start-date" name="trip-start" value="1996-01-01" min="1996-01-01" max="2023-01-01">
+    <button onclick="findDate()">Busca</button>
+    <div id="loading"></div>
+    <h2>Informacio de Asteroides</h2>
+    <h3>Meteorid 1</h3>
+    <div class="asteroidinfo">
+        <select onchange="generaNovesDades()" name="" id="selector1">
+        </select>
+        <table>
+            <tr id="thGenerated">
+            </tr>
+            <tr id="tdGenerated">
+            </tr>
+        </table>
+    </div>
+    <h3>Meteorid 2</h3>
+    <div class="asteroidinfo">
+        <select onchange="generaNovesDades()" name="" id="selector2">
+        </select>
+        <table>
+            <tr id="thGenerated2">
+            </tr>
+            <tr id="tdGenerated2">
+            </tr>
+        </table>
+    </div>
+    <h3>Colors</h3>
+    <select onchange="changeMaterial(0, event)" name="" id="">
+        <option selected value="textures/stone.png">Stone asteroids</option>
+        <option value="textures/dirt.png">Dirt asteroids</option>
+        <option value="textures/mars.png">Mars asteroids</option>
+    </select>
+
+    <select onchange="changeMaterial(1, event)" name="" id="">
+        <option selected value="textures/stone.png">Stone asteroids</option>
+        <option value="textures/dirt.png">Dirt asteroids</option>
+        <option value="textures/mars.png">Mars asteroids</option>
+    </select>
+
     <h2>Canvas</h2>
+    <div class="terrainput">
+        <label for="tierra">Veure Terra</label>
+        <input onchange="generaEarth(event)" id="tierra" type="checkbox" name="tierra" value="Car">
+    </div>
     <div id="escenario">
         <div id="camara">
-                <div class="camera">
+            <div class="camera">
                 <button class="material-icons" onmouseup="zoomPressed=false" onmousedown="moveCamera(0,1,0)">
                     keyboard_arrow_up
                 </button>
@@ -39,29 +82,9 @@
             </div>
             <label for="velocityCamera">SpeedCamera</label>
             <input onchange="actualitzaVelocitat()" min="0" value="1" type="number" step="0.1" id="velocityCamera">
-       
+
         </div>
     </div>
-
-
-    <h2>Meteoritos</h2>
-    <div class="meteor-text">
-        <button onclick="drawMeteroid(-1)">Atras</button>
-        <span id="actualMeteor">1</span>
-        /<span id="lastMeteor">12</span>
-        <button onclick="drawMeteroid(1)">Delante</button>
-    </div>
-
-
-    <div id="meteoritos">
-    </div>
-
-    <input type="date" id="start-date" name="trip-start" value="1996-01-01" min="1996-01-01" max="2023-01-01">
-    <button onclick="findDate()">Busca</button>
-    <div id="loading"></div>
-
-
-
 
     <h2>Foto del dia</h2>
     <div id="fotoDiaria">
